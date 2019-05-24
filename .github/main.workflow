@@ -16,10 +16,10 @@ action "npm ci" {
   args = "npm run ci"
 }
 
-action "npm release" {
+action "github-actions-release" {
   uses = "./"
   needs = ["npm ci"]
-  args = "check --test=abcd"
+  args = "release"
   secrets = ["GITHUB_TOKEN"]
 }
 
@@ -31,5 +31,5 @@ workflow "Push" {
 
 workflow "Pull Request" {
   on = "pull_request"
-  resolves = ["npm install", "npm test", "npm ci", "npm release"]
+  resolves = ["npm install", "npm test", "npm ci", "github-actions-release"]
 }

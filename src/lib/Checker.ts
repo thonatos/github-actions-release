@@ -29,5 +29,9 @@ export default class Checker extends Base {
     if (label) {
       await this.updateLabel(label);
     }
+
+    if (this.event === 'pull_request' && this.action === 'closed') {
+      await this.releaseVersion();
+    }
   }
 }
