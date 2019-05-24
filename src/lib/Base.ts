@@ -38,9 +38,9 @@ export default class Base {
 
     tools.log('@@releaseVersion', state, merged, nextVersion);
 
-    // if (state !== 'closed' || merged !== true) {
-    //   return;
-    // }
+    if (state !== 'closed' || merged !== true) {
+      return;
+    }
 
     await tools.runInWorkspace('git', ['checkout', 'master']);
     await standardVersion({

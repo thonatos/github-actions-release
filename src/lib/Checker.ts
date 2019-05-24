@@ -7,7 +7,7 @@ export default class Checker extends Base {
   }
 
   public async run() {
-    const { currVersion, nextVersion, tools } = this;
+    const { currVersion, nextVersion, tools, action, event } = this;
     if (!nextVersion) {
       tools.log('CheckReleaseProposal Failed, skip!');
       return;
@@ -25,15 +25,15 @@ export default class Checker extends Base {
       return;
     }
 
-    tools.log('Label', label);
-    if (label) {
-      await this.updateLabel(label);
+    tools.log('UpdateLabel', label);
+    await this.updateLabel(label);
+
+    if (event !== 'pull_request' || action !== 'closed') {
+      tools.log('ReleaseVersion Failed, skip!', event, action);
+      return;
     }
 
+    tools.log('ReleaseVersion', nextVersion);
     await this.releaseVersion();
-
-    // if (this.event === 'pull_request' && this.action === 'closed') {
-    //   await this.releaseVersion();
-    // }
   }
 }
