@@ -15,4 +15,4 @@ RUN npm install
 
 COPY . .
 
-ENTRYPOINT ["npm start"]
+ENTRYPOINT ["node", "dist/index.js"]
