@@ -27,3 +27,13 @@ Add the label to the Release Pull Request
 1.0.0 -> 1.1.1 👉 semver:minor
 1.0.0 -> 2.2.1 👉 semver:major
 ```
+
+## Contributing
+
+### Suggestions
+
+Please open an issue [here](https://github.com/thonatos/github-actions-release/issues).
+
+### License
+
+Maidops is [MIT licensed](./LICENSE).
