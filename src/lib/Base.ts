@@ -34,9 +34,9 @@ export default class Base {
   public async releaseVersion() {
     const tools = this.tools;
     const { nextVersion } = this;
-    const { state, merged } = this.tools.context.payload;
+    const { state, merged } = this.tools.context.payload.pull_request;
 
-    tools.log('@@releaseVersion', state, merged);
+    tools.log('@@releaseVersion', state, merged, nextVersion);
 
     // if (state !== 'closed' || merged !== true) {
     //   return;
