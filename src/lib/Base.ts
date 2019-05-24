@@ -21,12 +21,12 @@ export default class Base {
   public async updateLabel(label: string) {
     const {
       repo,
-      payload: { issue_number },
+      payload: { number: issueNumber },
     } = this.tools.context;
 
     await this.tools.github.issues.update({
       ...repo,
-      issue_number,
+      issue_number: issueNumber,
       labels: [`semver:${label}`],
     });
   }
