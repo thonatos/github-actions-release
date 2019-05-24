@@ -13,8 +13,8 @@ export default class Checker extends Base {
       return;
     }
 
-    if (checkReleaseVersion(currVersion, nextVersion)) {
-      tools.log('CheckReleaseVersion Failed, skip!', nextVersion, currVersion);
+    if (!checkReleaseVersion(currVersion, nextVersion)) {
+      tools.log('CheckReleaseVersion Failed, skip!', currVersion, nextVersion);
       return;
     }
 
