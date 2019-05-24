@@ -15,6 +15,7 @@ export default class Base {
   constructor(tools: any) {
     this.tools = tools;
     this.debug = Debug('Github-Actions-Release');
+    this.init();
   }
 
   public async updateLabel(label: string) {
