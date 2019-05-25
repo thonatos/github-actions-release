@@ -95,7 +95,7 @@ workflow "Pull Request" {
 - Create the PR
 - Review code
 - Change PR title to `Release {Semver Version}`
-- Close PR without deleting branch
+- Merge PR without deleting branch
 
 What will the action do ?
 
