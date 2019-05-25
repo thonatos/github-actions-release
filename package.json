@@ -2,7 +2,10 @@
   "name": "github-actions-release",
   "version": "1.0.6",
   "description": "Github Actions For Release",
-  "main": "dist/index.js",
+  "main": "dist/bin/release.js",
+  "bin": {
+    "actions-release": "dist/bin/release.js"
+  },
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",

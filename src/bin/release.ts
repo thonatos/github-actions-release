@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 import { Toolkit } from 'actions-toolkit';
-import Checker from './lib/Checker';
+import Checker from '../lib/Checker';
 
 const options = {
   event: 'pull_request',
@@ -8,8 +10,8 @@ const options = {
     'RELEASE_SSH_ID_RSA_PUB',
     'NPM_AUTH_TOKEN',
     'RELEASE_GIT_USER_NAME',
-    'RELEASE_GIT_USER_EMAIL',
-  ],
+    'RELEASE_GIT_USER_EMAIL'
+  ]
 };
 
 const task = async (tools: any) => {

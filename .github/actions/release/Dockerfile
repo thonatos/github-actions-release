@@ -11,10 +11,7 @@ LABEL "maintainer"="Thonatos Yang <thonatos.yang@gmail.com>"
 
 RUN \
     apt-get update -y && \
-    apt-get install -y git && \
-    npm i -g github-actions-release
-
-COPY . .
+    apt-get install -y git
 
 COPY entrypoint.sh /entrypoint.sh
 
