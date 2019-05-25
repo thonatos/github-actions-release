@@ -3,7 +3,13 @@ import Checker from './lib/Checker';
 
 const options = {
   event: 'pull_request',
-  secrets: ['RELEASE_SSH_ID_RSA', 'RELEASE_SSH_ID_RSA_PUB', 'NPM_AUTH_TOKEN'],
+  secrets: [
+    'RELEASE_SSH_ID_RSA',
+    'RELEASE_SSH_ID_RSA_PUB',
+    'NPM_AUTH_TOKEN',
+    'RELEASE_GIT_USER_NAME',
+    'RELEASE_GIT_USER_EMAIL',
+  ],
 };
 
 const task = async (tools: any) => {

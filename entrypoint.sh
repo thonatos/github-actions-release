@@ -10,8 +10,8 @@ if [ -n "$RELEASE_SSH_ID_RSA" ] && [ -n "$RELEASE_SSH_ID_RSA" ]; then
   echo "$RELEASE_SSH_ID_RSA_PUB" > /root/.ssh/id_rsa.pub;
   chmod 400 /root/.ssh/id_rsa;
   chmod 400 /root/.ssh/id_rsa.pub;
-  git config --global user.name "Release Bot";
-  git config --global user.email "release_bot@eggjs.app";
+  git config --global user.name "$RELEASE_GIT_USER_NAME";
+  git config --global user.email "$RELEASE_GIT_USER_EMAIL";
 fi
 
 # add npm config
