@@ -1,4 +1,15 @@
-# Github Actions Release
+# Github Actions Release &middot; [![GitHub license][license-square]][license-url] 
+
+[![Egg.js][egg-square]][egg-url]
+[![NPM Version][npm-square]][npm-url]
+
+[license-square]: https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square
+[egg-square]: https://img.shields.io/badge/Awesome-Egg.js-ff69b4.svg?style=flat-square
+[npm-square]: https://img.shields.io/npm/v/github-actions-release.svg?style=flat-square
+
+[license-url]: https://github.com/thonatos/github-actions-release/blob/HEAD/LICENSE
+[egg-url]: https://eggjs.org/
+[npm-url]: https://www.npmjs.com/package/github-actions-release
 
 > Github actions for the package release.
 
@@ -39,6 +50,7 @@ action "github-actions-release" {
   args = "release"
   secrets = [
     "GITHUB_TOKEN",
+    "NPM_AUTH_TOKEN",
     "RELEASE_SSH_ID_RSA",
     "RELEASE_SSH_ID_RSA_PUB",
   ]
