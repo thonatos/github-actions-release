@@ -22,5 +22,3 @@ COPY . .
 COPY entrypoint.sh /entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
-
-# ENTRYPOINT ["node", "dist/index.js"]
