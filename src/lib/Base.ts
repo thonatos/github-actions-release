@@ -62,6 +62,11 @@ export default class Base {
     ]);
   }
 
+  public async publishNodePackage() {
+    const tools = this.tools;
+    await tools.runInWorkspace('npm', ['publish', '--access' , 'public']);
+  }
+
   public init() {
     const tools = this.tools;
     const pkg = tools.getPackageJSON() || {};

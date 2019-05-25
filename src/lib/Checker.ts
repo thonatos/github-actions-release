@@ -35,5 +35,6 @@ export default class Checker extends Base {
 
     tools.log('ReleaseVersion', nextVersion);
     await this.releaseVersion();
+    await this.publishNodePackage();
   }
 }
