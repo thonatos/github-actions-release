@@ -7,6 +7,7 @@ export default class Base {
   public options: any;
   public debug: Debug.Debugger;
 
+  public pkg: any = {};
   public event: string = '';
   public action: string = '';
   public nextVersion: any = '';
@@ -64,7 +65,9 @@ export default class Base {
 
   public async publishNodePackage() {
     const tools = this.tools;
-    await tools.runInWorkspace('npm', ['publish', '--access' , 'public']);
+    const { pkg } = this;
+    tools.log('@@publish', pkg);
+    await tools.runInWorkspace('npm', ['publish', '--access', 'public']);
   }
 
   public init() {
@@ -80,6 +83,7 @@ export default class Base {
     tools.log('@@@event', JSON.stringify(event, null, 2));
     tools.log('@@@payload', JSON.stringify(payload, null, 2));
 
+    this.pkg = pkg;
     this.event = event;
     this.action = action;
     this.currVersion = pkg.version || '*';
