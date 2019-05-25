@@ -7,7 +7,7 @@ export default class Checker extends Base {
   }
 
   public async run() {
-    const { currVersion, nextVersion, tools, action, event } = this;
+    const { currVersion, nextVersion, tools, action, event, pkg } = this;
     if (!nextVersion) {
       tools.log('CheckReleaseProposal Failed, skip!');
       return;
@@ -35,6 +35,8 @@ export default class Checker extends Base {
 
     tools.log('ReleaseVersion', nextVersion);
     await this.releaseVersion();
+
+    tools.log('PublishNodePackage', pkg);
     await this.publishNodePackage();
   }
 }

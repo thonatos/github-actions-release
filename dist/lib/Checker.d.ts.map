@@ -1,1 +1,1 @@
-{"version":3,"file":"Checker.d.ts","sourceRoot":"","sources":["../../src/lib/Checker.ts"],"names":[],"mappings":"AACA,OAAO,IAAI,MAAM,QAAQ,CAAC;AAE1B,MAAM,CAAC,OAAO,OAAO,OAAQ,SAAQ,IAAI;gBAC3B,KAAK,EAAE,GAAG;IAIT,GAAG;CA8BjB"}
+{"version":3,"file":"Checker.d.ts","sourceRoot":"","sources":["../../src/lib/Checker.ts"],"names":[],"mappings":"AACA,OAAO,IAAI,MAAM,QAAQ,CAAC;AAE1B,MAAM,CAAC,OAAO,OAAO,OAAQ,SAAQ,IAAI;gBAC3B,KAAK,EAAE,GAAG;IAIT,GAAG;CAiCjB"}

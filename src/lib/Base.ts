@@ -33,8 +33,7 @@ export default class Base {
   }
 
   public async releaseVersion() {
-    const tools = this.tools;
-    const { nextVersion } = this;
+    const { nextVersion, tools } = this;
     const { state, merged } = this.tools.context.payload.pull_request;
 
     tools.log('@@releaseVersion', state, merged, nextVersion);
@@ -64,9 +63,9 @@ export default class Base {
   }
 
   public async publishNodePackage() {
-    const tools = this.tools;
-    const { pkg } = this;
-    tools.log('@@publish', pkg);
+    const { pkg, tools } = this;
+    tools.log('@@publishNodePackage', pkg);
+
     await tools.runInWorkspace('npm', ['publish', '--access', 'public']);
   }
 
