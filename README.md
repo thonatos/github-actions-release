@@ -28,6 +28,23 @@ Add the label to the Release Pull Request
 1.0.0 -> 2.2.1 👉 semver:major
 ```
 
+## Usage
+
+Add id_rsa / id_rsa.pub to secrets.
+
+```
+action "github-actions-release" {
+  uses = "./"
+  needs = ["npm ci"]
+  args = "release"
+  secrets = [
+    "GITHUB_TOKEN",
+    "RELEASE_SSH_ID_RSA",
+    "RELEASE_SSH_ID_RSA_PUB",
+  ]
+}
+```
+
 ## Contributing
 
 ### Suggestions
