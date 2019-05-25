@@ -76,7 +76,7 @@ action "npm ci" {
 }
 
 action "github-actions-release" {
-  uses = "./"
+  uses = "thonatos/github-actions-release"
   needs = ["npm ci"]
   args = "release"
   secrets = [
