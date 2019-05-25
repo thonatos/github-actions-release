@@ -56,17 +56,11 @@ Add the label to the Release Pull Request
 
 **Create Workflow**
 
-```
+```bash
 ## actions
 action "npm install" {
   uses = "docker://node:lts-slim"
   args = "npm i"
-}
-
-action "npm test" {
-  uses = "docker://node:lts-slim"
-  needs = ["npm install"]
-  args = "npm run test"
 }
 
 action "npm ci" {
@@ -75,10 +69,10 @@ action "npm ci" {
   args = "npm run ci"
 }
 
-action "github-actions-release" {
-  uses = "thonatos/github-actions-release"
+action "npm release" {
+  uses = "thonatos/github-actions-release@master"
   needs = ["npm ci"]
-  args = "release"
+  args = "actions-release"
   secrets = [
     "GITHUB_TOKEN",
     "NPM_AUTH_TOKEN",
@@ -92,7 +86,7 @@ action "github-actions-release" {
 ## workflow
 workflow "Pull Request" {
   on = "pull_request"
-  resolves = ["npm install", "npm test", "npm ci", "github-actions-release"]
+  resolves = ["npm install", "npm ci", "npm release"]
 }
 ```
 
@@ -117,4 +111,4 @@ Please open an issue [here](https://github.com/thonatos/github-actions-release/i
 
 ### License
 
-Maidops is [MIT licensed](./LICENSE).
+Github Actions Release is [MIT licensed](./LICENSE).
