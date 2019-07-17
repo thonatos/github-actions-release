@@ -1,6 +1,6 @@
 import Debug from 'debug';
-import standardVersion from 'standard-version';
-import { StandardVersionTypes } from '../constants';
+// import standardVersion from 'standard-version';
+// import { StandardVersionTypes } from '../constants';
 import { checkReleaseProposal } from '../util';
 export default class Base {
   public tools: any;
@@ -43,16 +43,16 @@ export default class Base {
     }
 
     await tools.runInWorkspace('git', ['checkout', 'master']);
-    await standardVersion({
-      infile: 'CHANGELOG.md',
-      noVerify: true,
-      releaseAs: nextVersion,
-      silent: true,
-      types: StandardVersionTypes,
-    });
+    // await standardVersion({
+    //   infile: 'CHANGELOG.md',
+    //   noVerify: true,
+    //   releaseAs: nextVersion,
+    //   silent: true,
+    //   types: StandardVersionTypes,
+    // });
 
-    const changelog = tools.getFile('CHANGELOG.md');
-    tools.log('@@changelog', changelog);
+    // const changelog = tools.getFile('CHANGELOG.md');
+    // tools.log('@@changelog', changelog);
 
     await tools.runInWorkspace('git', [
       'push',
