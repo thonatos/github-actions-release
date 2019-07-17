@@ -21,11 +21,11 @@
 
 ### Pull Request Checker
 
-**Check Release Proposal**
+#### Check Release Proposal
 
 > Example: 'Release {Semver Version}'
 
-**Check Release Version**
+#### Check Release Version
 
 ```
 1.0.0 -> 1.0.1 ✅
@@ -33,7 +33,7 @@
 2.0.0 -> 1.0.0 ❎
 ```
 
-**Search Release Label**
+#### Search Release Label
 
 Add the label to the Release Pull Request
 
@@ -45,24 +45,26 @@ Add the label to the Release Pull Request
 
 ### Auto Release
 
-**Release to Github**
+#### Release to Github
 
 > commit message: Release {Semver Version}
 
 - Create tag
 - Create release
 
-**Release NPM Package**
+#### Release NPM Package
 
 - Publish to NPM
 
 ## Usage
 
-**Enable Github Actions**
+### Prepare
+
+Enable Github Actions
 
 > https://github.com/features/actions
 
-**Add NPM Token to Secrets.**
+Add NPM Token to Secrets.
 
 > Project - Settings - Secrets
 
@@ -138,7 +140,7 @@ action "npm release" {
 
 ### Workflow
 
-**Handle Pull Request**
+Handle Pull Request
 
 - Create the PR(title: `Release {Semver Version}`)
   1. check the release proposal
