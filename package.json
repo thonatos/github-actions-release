@@ -9,58 +9,38 @@
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",
-    "lint": "tslint --project . ",
     "ci": "npm run test",
+    "lint": "tslint --project . ",
+    "release": "semantic-release",
     "test": "jest --verbose",
-    "test-watch": "jest --watch",
-    "release": "standard-version"
-  },
-  "standard-version": {
-    "types": [
-      {
-        "type": "feat",
-        "section": "Features"
-      },
-      {
-        "type": "fix",
-        "section": "Bug Fixes"
-      },
-      {
-        "type": "test",
-        "section": "Tests",
-        "hidden": true
-      },
-      {
-        "type": "build",
-        "section": "Build System",
-        "hidden": true
-      },
-      {
-        "type": "chore",
-        "hidden": true
-      },
-      {
-        "type": "ci",
-        "hidden": true
-      }
-    ]
+    "test-watch": "jest --watch"
   },
   "author": "Thonatos.Yang <thonatos.yang@gmail.com>",
   "license": "MIT",
   "dependencies": {
     "actions-toolkit": "^2.1.0",
     "debug": "^4.1.1",
-    "semver": "^6.1.0",
-    "standard-version": "^6.0.1"
+    "semver": "^6.1.0"
   },
   "devDependencies": {
     "@types/debug": "^4.1.4",
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.2",
     "@types/semver": "^6.0.0",
+    "git-changelog-parser": "^1.0.0",
     "jest": "^24.8.0",
+    "semantic-release": "^15.13.18",
     "ts-jest": "^24.0.2",
     "tslint": "^5.16.0",
     "typescript": "^3.4.5"
+  },
+  "release": {
+    "branche": "master",
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/npm",
+      "@semantic-release/github"
+    ]
   }
 }
