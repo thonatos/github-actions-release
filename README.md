@@ -1,4 +1,4 @@
-# Github Actions Release &middot; [![GitHub license][license-square]][license-url]
+# Github Actions Workman &middot; [![GitHub license][license-square]][license-url]
 
 [![Egg.js][egg-square]][egg-url]
 [![NPM Version][npm-square]][npm-url]

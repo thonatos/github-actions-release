@@ -16,6 +16,11 @@ export const checkReleaseProposal = (proposal: string) => {
   return semver.valid(proposal.slice(8));
 };
 
+export const checkChangelogVersion = (changelog: any = [], releaseVersion: string) => {
+  const { version = '' } = changelog[0] || {};
+  return version === releaseVersion;
+};
+
 /**
  * Release Label Searcher
  * @param {String} currVersion

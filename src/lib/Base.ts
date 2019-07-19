@@ -1,6 +1,6 @@
 import Debug from 'debug';
-// import standardVersion from 'standard-version';
-// import { StandardVersionTypes } from '../constants';
+import * as parse from 'git-changelog-parser';
+import latestNpmVersion from 'latest-version';
 import { checkReleaseProposal } from '../util';
 export default class Base {
   public tools: any;
@@ -10,67 +10,18 @@ export default class Base {
   public pkg: any = {};
   public event: string = '';
   public action: string = '';
-  public nextVersion: any = '';
-  public currVersion: any = '';
 
-  constructor(tools: any) {
-    this.tools = tools;
+  public changelog: any = '';
+  public packageVersion: any = '';
+  public releaseVersion: any = '';
+  public latestVersion: any = '';
+
+  constructor() {
     this.debug = Debug('Github-Actions-Release');
-    this.init();
   }
 
-  public async updateLabel(label: string) {
-    const {
-      repo,
-      payload: { number: issueNumber },
-    } = this.tools.context;
+  public async init(tools: any) {
 
-    await this.tools.github.issues.update({
-      ...repo,
-      issue_number: issueNumber,
-      labels: [`semver:${label}`],
-    });
-  }
-
-  public async releaseVersion() {
-    const { nextVersion, tools } = this;
-    const { state, merged } = this.tools.context.payload.pull_request;
-
-    tools.log('@@releaseVersion', state, merged, nextVersion);
-
-    if (state !== 'closed' || merged !== true) {
-      return;
-    }
-
-    await tools.runInWorkspace('git', ['checkout', 'master']);
-    // await standardVersion({
-    //   infile: 'CHANGELOG.md',
-    //   noVerify: true,
-    //   releaseAs: nextVersion,
-    //   silent: true,
-    //   types: StandardVersionTypes,
-    // });
-
-    // const changelog = tools.getFile('CHANGELOG.md');
-    // tools.log('@@changelog', changelog);
-
-    await tools.runInWorkspace('git', [
-      'push',
-      '--follow-tags',
-      'origin',
-      'master',
-    ]);
-  }
-
-  public async publishNodePackage() {
-    const { pkg, tools } = this;
-    tools.log('@@publishNodePackage', pkg);
-
-    await tools.runInWorkspace('npm', ['publish', '--access', 'public']);
-  }
-
-  public init() {
-    const tools = this.tools;
     const pkg = tools.getPackageJSON() || {};
     const { event, payload, repo } = tools.context;
     const { action } = payload;
@@ -83,9 +34,29 @@ export default class Base {
     tools.log('@@@payload', JSON.stringify(payload, null, 2));
 
     this.pkg = pkg;
+    this.tools = tools;
     this.event = event;
     this.action = action;
-    this.currVersion = pkg.version || '*';
-    this.nextVersion = checkReleaseProposal(payload.pull_request.title);
+
+    await this.prepare();
+  }
+
+  public async prepare() {
+    const tools = this.tools;
+    const pkg = tools.getPackageJSON() || {};
+    const { payload } = tools.context;
+
+    // changelog
+    const content = tools.getFile('History.md');
+    this.changelog = parse(content);
+
+    // current npm version
+    this.packageVersion = pkg.version || '*';
+
+    // latest npm version
+    this.latestVersion = await latestNpmVersion(pkg.packageName || '');
+
+    // release npm version
+    this.releaseVersion = checkReleaseProposal(payload.pull_request.title);
   }
 }

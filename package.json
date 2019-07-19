@@ -1,17 +1,17 @@
 {
-  "name": "github-actions-release",
+  "name": "github-actions-workman",
   "version": "0.0.0-development",
-  "description": "Github Actions For Release",
-  "main": "dist/bin/release.js",
+  "description": "Workman For Egg.js",
+  "main": "dist/bin/workman.js",
   "bin": {
-    "actions-release": "dist/bin/release.js"
+    "workman": "dist/bin/workman.js"
   },
   "scripts": {
     "dev": "tsc -w",
     "build": "tsc",
     "ci": "npm run test",
     "lint": "tslint --project . ",
-    "release": "semantic-release",
+    "release": "tsc && semantic-release",
     "test": "jest --verbose",
     "test-watch": "jest --watch"
   },
@@ -20,6 +20,7 @@
   "dependencies": {
     "actions-toolkit": "^2.1.0",
     "debug": "^4.1.1",
+    "latest-version": "^5.1.0",
     "semver": "^6.1.0"
   },
   "devDependencies": {
