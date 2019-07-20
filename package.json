@@ -1,6 +1,6 @@
 {
   "name": "github-actions-workman",
-  "version": "0.0.0-development",
+  "version": "2.0.0",
   "description": "Workman For Egg.js",
   "main": "dist/bin/workman.js",
   "bin": {
