@@ -47,7 +47,7 @@ action "npm ci" {
 }
 
 action "npm check" {
-  uses = "thonatos/github-actions-workman@master"
+  uses = "thonatos/github-actions-workman@1.3.1-Marketplace"
   needs = ["npm ci"]
   args = "workman check"
   secrets = [
