@@ -17,23 +17,21 @@ const task = async (tools: any) => {
   tools.log('@@arguments', args);
 
   const { _: commands } = args;
-  const [ command = '', ] = commands || [];
+  const [command = '', ] = commands || [];
 
-  switch (command) {
-    case 'check':
-      const checker = new Checker();
-      await checker.run(tools);
-      break;
+  tools.log('@@command', command);
 
-    case 'release':
-      const releaser = new Releaser();
-      await releaser.run(tools);
-      break;
-
-    default:
-      tools.log('@@command', 'no command found');
-      break;
+  if (command === 'check') {
+    const checker = new Checker();
+    await checker.run(tools);
   }
+
+  if (command === 'release') {
+    const releaser = new Releaser();
+    await releaser.run(tools);
+  }
+
+  tools.log('@@command', 'no command found');
 
 };
 
