@@ -1,4 +1,4 @@
-# PUSH
+# Push
 workflow "Push" {
   on = "push"
   resolves = ["Release"]
@@ -40,15 +40,9 @@ action "npm install" {
   args = "npm install"
 }
 
-action "npm install tools" {
-  uses = "docker://node:lts-slim"
-  needs = "npm install"
-  args = "npm install -g github-actions-workman@1.3.0"
-}
-
 action "npm ci" {
   uses = "docker://node:lts-slim"
-  needs = ["npm install tools"]
+  needs = ["npm install"]
   args = "npm run ci"
 }
 
